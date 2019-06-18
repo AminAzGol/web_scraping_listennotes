@@ -65,61 +65,8 @@ def response_hook(resp, *args, **kwargs):
     global curr_req_max
     curr_req_max = content['total']
 
-def req(offset, keyword):
-    global curr_req_max
-    req_time = time()
-    url = 'https://www.listennotes.com/endpoints/v1/channels/search/'
-    data = {
-        'earliest_end_time':'',
-        'earliest_start_time':'',
-        'ecount_min': 0,
-        'language': 'Any language',
-        'ncid':'',
-        'ocid': '',
-        'offset': offset,
-        'q': keyword,
-        'sort_by_date': 0,
-        'start_time':''
-    }
-    headers = {
-            "Host": "www.listennotes.com",
-            "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:66.0) Gecko/20100101 Firefox/66.0",
-            "Accept": "application/json, text/plain, */*",
-            "Accept-Language": "en-US,en;q=0.5A",
-            "Accept-Encoding": "gzip, deflate, br",
-            "Referer": "https://www.listennotes.com/",
-            "X-CSRFToken": "mc9OGLVwpy2J1FISUAexYg3zEhQ7WtSipeWolgGhWBHRD4qK9ZIZSmvBsbRYmbyT",
-            "Content-Type": "application/x-www-form-urlencoded",
-            "Content-Length": "131",
-            "Connection": "keep-alive",
-            "Cookie": "__cfduid=d6883d0b7a49e331f8934827970d7263b1560788822; csrftoken=mc9OGLVwpy2J1FISUAexYg3zEhQ7WtSipeWolgGhWBHRD4qK9ZIZSmvBsbRYmbyT",
-            "Pragma": "no-cache",
-            "Cache-Control": "no-cache",
-            "TE": "Trailers"
-    }
-    try:
-        res = requests.post(url, data, headers=headers)
-    except:
-        print("I got an ERROR")
-        save()
-        return []
 
-    if res.status_code is not 200:
-        print("I got an ERROR")
-        print(res)
-        save()
-        return []
-
-    print(res.headers)
-    dec_res = brotli.decompress(res.content)
-    print(dec_res)
-    content = json.loads(dec_res)
-    curr_req_max = content['total']
-    print("req time: "+str(time() - req_time) +" s")
-    return content['results']
-
-
-def read_previus_atempt_data():
+def read_previous_attempt_data():
     global main_dataframe, previous_file_name,previous_keyword_offset
     with open('pre_data.txt') as f:
         if f.readable():
@@ -165,7 +112,6 @@ def add_dataframe(docs):
         main_dataframe = main_dataframe.append(new_df, ignore_index=True)
 
     total_count = len(main_dataframe.index)
-    # print("count: "+str(total_count))
 
     main_dataframe.drop_duplicates(subset="uuid", keep='first', inplace=True)
 
@@ -190,7 +136,7 @@ def save():
 
 atexit.register(save)
 session = FuturesSession()
-read_previus_atempt_data()
+read_previous_attempt_data()
 exc_count = 0
 pre_total_count=0
 req_max = 20
@@ -199,8 +145,6 @@ for k in range(previous_keyword_offset, len(keywords)):
     keyword_index = k
     keyword = keywords[k]
     offset = 0
-    # results = req(offset, keyword)
-    # add_dataframe(results)
     first = async_req(offset, keyword)
     res = first.result()
     if not res.dec_result:
@@ -216,7 +160,6 @@ for k in range(previous_keyword_offset, len(keywords)):
             empty_result = False
             tic = time()
             for request in req_list:
-                # print(req_list.index(request))
                 res = request.result()
                 if not res.dec_result:
                     empty_result = True
@@ -236,29 +179,3 @@ for k in range(previous_keyword_offset, len(keywords)):
 
     if total_count >= total_max:
         break
-# results = req(offset, keyword)
-# if not results:
-#     break
-# add_dataframe(results)
-
-#test
-# results = req(10, 'Family')
-# add_dataframe(results)
-# results = req(20, 'Literature')
-# add_dataframe(results)
-
-# save
-save()
-
-
-# data = {
-#     'title': doc['title'],
-#     'author':doc['author'],
-#     'episode_count':doc['episode_count'],
-#     'earliest_pub_date': doc['earliest_pub_date'],
-#     'earliest_pub_date_ms': doc['earliest_pub_date_ms'],
-#     'tags': doc['genres.py'], #TODO: get the genres.py names
-#     'relevant_social_media':'',
-#     'contact links':''
-# }
-
