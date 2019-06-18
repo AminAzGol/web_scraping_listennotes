@@ -1,0 +1,220 @@
+99
+News & Politics 
+117
+Government & Organizations 
+93
+Business 
+99
+News & Politics 
+117
+Government & Organizations 
+93
+Business 
+98
+Investing 
+68
+TV & Film 
+121
+National 
+122
+Society & Culture 
+125
+History 
+145
+Parenting 
+88
+Health 
+91
+Alternative Health 
+132
+Kids & Family 
+133
+Comedy 
+100
+Arts 
+104
+Literature 
+107
+Science & Medicine 
+126
+Philosophy 
+92
+Sexuality 
+106
+Fashion & Beauty 
+99
+News & Politics 
+117
+Government & Organizations 
+93
+Business 
+98
+Investing 
+68
+TV & Film 
+124
+Personal Journals 
+127
+Technology 
+129
+Podcasting 
+118
+Local 
+144
+Personal Finance 
+90
+Self-Help 
+165
+Storytelling 
+135
+True Crime 
+157
+Startup 
+97
+Management & Marketing 
+69
+Religion & Spirituality 
+75
+Christianity 
+109
+Medicine 
+71
+Islam 
+111
+Education 
+84
+Automotive 
+82
+Games & Hobbies 
+101
+Performing Arts 
+102
+Food 
+134
+Music 
+130
+Gadgets 
+131
+Tech News 
+94
+Careers 
+115
+Training 
+108
+Social Sciences 
+113
+Higher Education 
+95
+Business News 
+77
+Sports & Recreation 
+78
+Professional 
+148
+American History 
+105
+Design 
+89
+Fitness & Nutrition 
+74
+Other 
+79
+Outdoor 
+80
+College & High School 
+123
+Places & Travel 
+114
+K-12 
+85
+Video Games 
+86
+Hobbies 
+146
+LGBTQ 
+119
+Non-Profit 
+110
+Natural Sciences 
+136
+Crypto & Blockchain 
+120
+Regional 
+167
+Audio Drama 
+168
+Fiction 
+83
+Other Games 
+112
+Educational Technology 
+87
+Aviation 
+128
+Software How-To 
+70
+Spirituality 
+72
+Buddhism 
+96
+Shopping 
+103
+Visual Arts 
+73
+Judaism 
+116
+Language Courses 
+151
+Locally Focused 
+152
+United States 
+153
+New York 
+140
+Web Design 
+138
+Movie 
+160
+Star Wars 
+149
+Venture Capital 
+147
+SEO 
+141
+Golf 
+81
+Amateur 
+169
+Sales 
+156
+China 
+142
+English Learning 
+143
+Programming 
+161
+Star Trek 
+162
+Game of Thrones 
+137
+NBA 
+154
+San Francisco Bay Area 
+166
+YouTube 
+150
+Chinese History 
+159
+Harry Potter 
+163
+AI & Data Science 
+139
+VR & AR 
+76
+Hinduism 
+164
+Apple 
+155
+Denver 
+158
+NFL 
