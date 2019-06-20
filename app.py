@@ -59,12 +59,14 @@ def async_req(offset, keyword):
 
 def response_hook(resp, *args, **kwargs):
     # parse the json storing the result on the response object
-    dec_res = brotli.decompress(resp.content)
-    content = json.loads(dec_res)
-    resp.dec_result = content['results']
-    global curr_req_max
-    curr_req_max = content['total']
-
+    try:
+        dec_res = brotli.decompress(resp.content)
+        content = json.loads(dec_res)
+        resp.dec_result = content['results']
+        global curr_req_max
+        curr_req_max = content['total']
+    except:
+        pass
 
 def read_previous_attempt_data():
     global main_dataframe, previous_file_name,previous_keyword_offset
